@@ -4,18 +4,62 @@
 ## Facultad de Ingeniería y Tecnologías
 ### Programación II - Composición y Delegación
 
-Problema
-1. Tarjetas CRC del problema (leer una imagen, pasarla por dos pipes que aplican dos filtros, guardar imagen modificada)
-2. Implementar eso en código
-3. Implementar el TwitterFilter
-4. Implementar ConvolutionFilter (en la implementación actual está la matriz en el código del ConvolutionBlurFilter)
-5. Implementar el ConditionalForkPipe (tienen que implementar un filtro condicional IFilterConditional que agrega una propiedad bool, y un pipe fork en función de esa propiedad)
-6. Probar el fork con CognitiveServices
-
 # Pipes & Filters
 Esta librería implementa un patrón conocido como Pipes and Filters. Esta arquitectura de software consta de dividir tareas complejas en tareas más pequeñas y sencillas que pueden ser ejecutas en serie o paralelo: https://docs.microsoft.com/en-us/azure/architecture/patterns/pipes-and-filters.
 En este caso particular, utilizaremos el patrón de Pipes and Filters aplicado a imagenes y modificaciones aplicadas a ellas (filtros).
 
+## Estructura de libreria
+Al igual que en ejercicios anteriores, haremos uso de algunas librerias externas para hacer funcionar este programa. Nuevamente utilizaremos las librerías de TwitterApi (https://github.com/ucudal/PII_TwitterApi) y CognitiveApi (https://github.com/ucudal/PII_CognitiveAPI)
+
+Esta vez, para que no pierdas tiempo con las referencias, ya te damos todo resuelto! Esta librería ya hace referencia a las dos anteriores mencionadas y todo debería funcionar sin que hagas ningún cambio. La única restricción es que todos los repos clonados de github se encuentren en carpetas "hermanas". Por ejemplo, podrias estructurar tus carpetas de la siguiente forma:
+
+```
+C:
+|->repos
+    |->PII_Pipes_Filters
+    |->PII_Twitter_Api
+    |->PII_CognitiveApi
+```
+
+## Ejercicio 1
+Observa el siguiente diagrama de secuencia:
+
+Aqui se puede observar cómo una imgen es enviada al primer tramo del pipe y se le aplica un filtro. Luego, esa imagen filtrada, es enviada al siguiente tramo de pipe donde se le aplica un segundo filtro. Finalmente, la imagen es enviada a un PipeNull, el cual no hace nada y finaliza la secuencia. 
+
+Tu primer desafío será reflejar en código esta secuencia! Para ello te damos este proyecto, el cual contiene un program vacio para que programes el ejemplo. No debería ser necesario agregar nuevas clases para esto.
+
+Para poder utlizar esta libreria, se debe primer cargar una imagen en un IPicture:
+```c#
+PictureProvider p = new PictureProvider();
+IPicture pic = p.GetPicture("PathToImage.jpg");
+```
+Luego, se deberan generar una serie de Pipes & Filters para transformar la imagen. Finalmente, se deberá guardar una copia de la imagen mediante el siguiente código:
+
+## Ejercicio 2
+En el primer ejercicio, pudimos ver cómo utilizar pipes & filters para aplicar una serie de transformaciones secuenciales sobre una imagen. El problema es que no vimos el resultado en ningún lado ya que no guardamos la imagen transformada!
+
+Para ello, vamos a tener que hacer 2 cosas. En primer lugar, necesitamos alguna forma de poder persistir un IPicture al disco. Podremos nuevamente utilizar el PictureProvider para esto:
+
+```c#
+PictureProvider p = new PictureProvider();
+IPicture pic = p.SavePicture("PathToNewImage.jpg");
+```
+
+Ahora que ya sabemos utilizar el PictureProvider para guardar imagenes, debemos poder utilizar esto en nuestra secuencia de pipes & filters. Cómo haremos eso?
+Que tal si consideramos el persistir una imagen, como un filtro más? En definitiva, esto no es mas que una transformación sobre un IPicture al igual que los demas IFilters, no?
+
+Tu segundo desafío será implementar esta funcionalidad de persistencia de imagenes, de forma tal que puedas almacenar el resultado de la secuencia en cualquier punto de la misma.
+
+## Ejercicio 3
+Ahora que ya tenemos una forma de aplicar filtros en secuencia y podemos verificar cómo estos se ven de forma local, queremos poder mostrar al mundo nuestro arte!Que sentido tiene ser creativos si no podemos mostrarlo públicamente?
+Para ello, tu siguiente desafío será publicar en Twitter las imagenes transformadas. Cómo ya vimos en el desafío anterior, esto también podría ser considerado una transformación sobre la IPicture. Deberás entonces encotrar una solución que permita publicar en Twitter el resultado de una secuencia de transformaciones en cualquier punto del Pipe.
+
+## Ejercicio 4
+Hasta ahora hemos realizado secuencias seriales de transformaciones. Que tal si queremos en algunos casos aplicar una transformación y en otros casos otra? Deberiamos para esto determinar en que casos realizar una acción y en que casos otra. Que tal si nuestro IFiltro tuviese un resultado de su ejecución. Un valor booleano en una propiedad por ejemplo. Podriamos llamar a este tipo de filtro "Filtro Condicional". Si tuviesemos esto, podriamos ahora si, crear un tipo de Pipe que envia por una secuencia en caso verdadero y por otra en caso falso. Sería algo así como un "Pipe condicional con bifurcacion" (seguramente puedas pensar un mejor nombre para esto!).
+
+Tu siguiente desafío será entonces crear un Filtro nuevo, el cual tenga un resultado de ejecución utlilizando la CognitiveApi. Si la imagen Filtrada contiene una cara, el resultado será ```true```, de lo contrario ```false```. Luego implementa un "Pipe condicional con bifurcacion", el cual aplica un filtro a la imagen si esta contiene una cara y otro filtro diferente si no contiene una cara. 
+
+## Ejercicio Bonus!
 Uno de los filtros implementados aqui es un filtro de convolución. Los filtros de convolución son una familia de filtros
 sencillos que calculan el color de un pixel en base al color de los pixels vecinos (https://en.wikipedia.org/wiki/Kernel_(image_processing)).
 Por ejemplo, un filtro de convolución es el suavizado, que permite hacer una imagen más
@@ -60,14 +104,5 @@ pixels.
 El resultado final sería así:
 ![original](https://upload.wikimedia.org/wikipedia/commons/5/50/Vd-Orig.png) => ![Blur](https://upload.wikimedia.org/wikipedia/commons/0/04/Vd-Blur2.png)
 
-Para poder utlizar esta libreria, se debe primer cargar una imagen en un IPicture:
-```c#
-PictureProvider p = new PictureProvider();
-IPicture pic = p.GetPicture("PathToImage.jpg");
-```
-Luego, se deberan generar una serie de Pipes & Filters para transformar la imagen. Finalmente, se deberá guardar una copia de la imagen mediante el siguiente código:
-
-```c#
-PictureProvider p = new PictureProvider();
-IPicture pic = p.SavePicture("PathToNewImage.jpg");
-```
+En esta libreria, ya tienes una implementación de este mismo filtro, pero esta es una solución muy rústica ya que solamente implementa una matriz. Que tal si quiero implmentar otros filtros de convolución para aplicar sobre mis imágenes?
+Tu último desafío, será idear una solución que permita de forma sencilla crear nuevos filtros de convolución haciendo uso de las técnicas de reutilización de código vistas hasta ahora. 
