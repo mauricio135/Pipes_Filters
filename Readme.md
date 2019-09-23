@@ -1,7 +1,20 @@
-# Composición y Delegación
+# Universidad Católica del Uruguay
+<img src="https://ucu.edu.uy/sites/all/themes/univer/logo.png"> 
 
-Esta librería implementa un patrón conocido como Pipes and Filters. Esta arquitectura de software consta de dividir tareas complejas en tareas más pequeñas y sencillas que pueden ser ejecutas en serie o paralelo: https://docs.microsoft.com/en-us/azure/architecture/patterns/pipes-and-filters .
-En este caso, utilizaremos el patrón de Pipes and Filters aplicado a imagenes y modificaciones aplicadas a ellas (filtros).
+## Facultad de Ingeniería y Tecnologías
+### Programación II - Composición y Delegación
+
+Problema
+1. Tarjetas CRC del problema (leer una imagen, pasarla por dos pipes que aplican dos filtros, guardar imagen modificada)
+2. Implementar eso en código
+3. Implementar el TwitterFilter
+4. Implementar ConvolutionFilter (en la implementación actual está la matriz en el código del ConvolutionBlurFilter)
+5. Implementar el ConditionalForkPipe (tienen que implementar un filtro condicional IFilterConditional que agrega una propiedad bool, y un pipe fork en función de esa propiedad)
+6. Probar el fork con CognitiveServices
+
+# Pipes & Filters
+Esta librería implementa un patrón conocido como Pipes and Filters. Esta arquitectura de software consta de dividir tareas complejas en tareas más pequeñas y sencillas que pueden ser ejecutas en serie o paralelo: https://docs.microsoft.com/en-us/azure/architecture/patterns/pipes-and-filters.
+En este caso particular, utilizaremos el patrón de Pipes and Filters aplicado a imagenes y modificaciones aplicadas a ellas (filtros).
 
 Uno de los filtros implementados aqui es un filtro de convolución. Los filtros de convolución son una familia de filtros
 sencillos que calculan el color de un pixel en base al color de los pixels vecinos (https://en.wikipedia.org/wiki/Kernel_(image_processing)).
@@ -14,7 +27,7 @@ elemento de la matriz es un coeficiente por el cual se debe multiplicar al color
 divisor y un complemento.
 Por ejemplo, para un posible filtro de suavizado, se puede utilizar una matriz (m) como:
 
-![alt text](https://github.com/fedemartino/CompAndDel/blob/master/matrix.png)
+![alt text](https://github.com/ucudal/PII_PipesFilters/blob/master/matrix.png)
 
 Un divisor de 9 y un complemento de 0.
 ```c#
