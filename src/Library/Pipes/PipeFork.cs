@@ -5,9 +5,9 @@ using System.Text;
 using CompAndDel;
 
 
-namespace CompAndDel.Filters.Pipes
+namespace CompAndDel.Pipes
 {
-    class PipeFork : IPipe
+    public class PipeFork : IPipe
     {
         IPipe next2Pipe;
         IPipe nextPipe;

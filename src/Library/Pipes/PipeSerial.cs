@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using CompAndDel;
 
-namespace CompAndDel.Filters.Pipes
+namespace CompAndDel.Pipes
 {
-    class PipeSerial : IPipe
+    public class PipeSerial : IPipe
     {
         protected IFilter filtro;
         protected IPipe nextPipe;

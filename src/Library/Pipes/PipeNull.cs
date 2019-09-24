@@ -5,9 +5,9 @@ using System.Text;
 using CompAndDel;
 
 
-namespace CompAndDel.Filters.Pipes
+namespace CompAndDel.Pipes
 {
-    class PipeNull : IPipe
+    public class PipeNull : IPipe
     {
         IPicture image;
         /// <summary>
