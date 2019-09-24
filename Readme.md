@@ -24,6 +24,8 @@ C:
 ## Ejercicio 1
 Observa el siguiente diagrama de secuencia:
 
+![](https://github.com/ucudal/PII_Pipes_Filters/blob/master/Sequence-1.png?raw=true)
+
 Aqui se puede observar cómo una imgen es enviada al primer tramo del pipe y se le aplica un filtro. Luego, esa imagen filtrada, es enviada al siguiente tramo de pipe donde se le aplica un segundo filtro. Finalmente, la imagen es enviada a un PipeNull, el cual no hace nada y finaliza la secuencia. 
 
 Tu primer desafío será reflejar en código esta secuencia! Para ello te damos este proyecto, el cual contiene un program vacio para que programes el ejemplo. No debería ser necesario agregar nuevas clases para esto.
@@ -59,6 +61,10 @@ Para ello, tu siguiente desafío será publicar en Twitter las imagenes transfor
 Hasta ahora hemos realizado secuencias seriales de transformaciones. Que tal si queremos en algunos casos aplicar una transformación y en otros casos otra? Deberiamos para esto determinar en que casos realizar una acción y en que casos otra. Que tal si nuestro IFiltro tuviese un resultado de su ejecución. Un valor booleano en una propiedad por ejemplo. Podriamos llamar a este tipo de filtro "Filtro Condicional". Si tuviesemos esto, podriamos ahora si, crear un tipo de Pipe que envia por una secuencia en caso verdadero y por otra en caso falso. Sería algo así como un "Pipe condicional con bifurcacion" (seguramente puedas pensar un mejor nombre para esto!).
 
 Tu siguiente desafío será entonces crear un Filtro nuevo, el cual tenga un resultado de ejecución utlilizando la CognitiveApi. Si la imagen Filtrada contiene una cara, el resultado será ```true```, de lo contrario ```false```. Luego implementa un "Pipe condicional con bifurcacion", el cual aplica un filtro a la imagen si esta contiene una cara y otro filtro diferente si no contiene una cara. 
+
+Aquí tienes un diagrama de secuencia que ilustra esto:
+![](https://github.com/ucudal/PII_Pipes_Filters/blob/master/Sequence-2.png?raw=true)
+
 
 ## Ejercicio Bonus!
 Uno de los filtros implementados aqui es un filtro de convolución. Los filtros de convolución son una familia de filtros
