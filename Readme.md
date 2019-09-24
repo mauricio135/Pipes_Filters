@@ -45,7 +45,8 @@ PictureProvider p = new PictureProvider();
 IPicture pic = p.SavePicture("PathToNewImage.jpg");
 ```
 
-Ahora que ya sabemos utilizar el PictureProvider para guardar imagenes, debemos poder utilizar esto en nuestra secuencia de pipes & filters. Cómo haremos eso?
+Ahora que ya sabemos utilizar el PictureProvider para guardar imagenes, podemos almacenar el resultado de la misma para ver como quedo. 
+Pero que tal si queremos ver los diferentes pasos de la transformación? deberiamos entonces poder utilizar esto en nuestra secuencia de pipes & filters. Cómo haremos eso?
 Que tal si consideramos el persistir una imagen, como un filtro más? En definitiva, esto no es mas que una transformación sobre un IPicture al igual que los demas IFilters, no?
 
 Tu segundo desafío será implementar esta funcionalidad de persistencia de imagenes, de forma tal que puedas almacenar el resultado de la secuencia en cualquier punto de la misma.
