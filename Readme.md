@@ -44,7 +44,7 @@ Para ello, vamos a tener que hacer 2 cosas. En primer lugar, necesitamos alguna 
 
 ```c#
 PictureProvider p = new PictureProvider();
-IPicture pic = p.SavePicture("PathToNewImage.jpg");
+p.SavePicture("PathToNewImage.jpg");
 ```
 
 Ahora que ya sabemos utilizar el PictureProvider para guardar imagenes, podemos almacenar el resultado de la misma para ver como quedo. 
