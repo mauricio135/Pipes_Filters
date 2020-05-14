@@ -14,11 +14,11 @@ Al igual que en ejercicios anteriores, haremos uso de algunas librerias externas
 Esta vez, para que no pierdas tiempo con las referencias, ya te damos todo resuelto! Esta librería ya hace referencia a las dos anteriores mencionadas y todo debería funcionar sin que hagas ningún cambio. La única restricción es que todos los repos clonados de github se encuentren en carpetas "hermanas". Por ejemplo, podrias estructurar tus carpetas de la siguiente forma:
 
 ```
-C:
-|->repos
-    |->PII_Pipes_Filters
-    |->PII_Twitter_Api
-    |->PII_CognitiveApi
+C:/
+  repos/
+    PII_Pipes_Filters/
+    PII_Twitter_Api/
+    PII_CognitiveApi/
 ```
 
 ## Ejercicio 1
