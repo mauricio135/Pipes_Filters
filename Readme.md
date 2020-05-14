@@ -1,10 +1,10 @@
-# Universidad Católica del Uruguay
-<img src="https://ucu.edu.uy/sites/all/themes/univer/logo.png"> 
+![UCU](https://github.com/ucudal/PII_Conceptos_De_POO/raw/master/Assets/logo-ucu.png)
 
-## Facultad de Ingeniería y Tecnologías
-### Programación II - Composición y Delegación
+# Pipes & Filters - Composición y Delegación
+### FIT - Universidad Católica del Uruguay
 
-# Pipes & Filters
+<br>
+
 Esta librería implementa un patrón conocido como Pipes and Filters. Esta arquitectura de software consta de dividir tareas complejas en tareas más pequeñas y sencillas que pueden ser ejecutas en serie o paralelo: https://docs.microsoft.com/en-us/azure/architecture/patterns/pipes-and-filters.
 En este caso particular, utilizaremos el patrón de Pipes and Filters aplicado a imagenes y modificaciones aplicadas a ellas (filtros).
 
