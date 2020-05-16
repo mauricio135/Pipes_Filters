@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Diagnostics;
 
 namespace CompAndDel.Filters
-{
+{                                                                                           
     public class FilterNegative : IFilter
     {
         /// <summary>
