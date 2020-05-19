@@ -9,7 +9,10 @@ namespace CompAndDel.Filters
         protected int[,] matrizParametros;
         protected int complemento, divisor;
         /// <summary>
-        /// Filtro complejo que suaviza los bordes de una imagen.
+        /// Filtro de convolución identidad que no altera la imagen. Para emplear reutilización de 
+        /// código se generan distintos filtros de convolución mediante herencia. FilterConvolution contiene
+        /// los métodos necesarios para aplicar un filtro con matriz de convolución, por lo que será
+        /// la superclase de los otros filtros (que contienen un constructor que establece los parámetros)
         /// </summary>
         /// <param name="name">Nombre del objeto</param>
         public FilterConvolution()

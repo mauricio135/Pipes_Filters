@@ -6,6 +6,10 @@ namespace CompAndDel.Filters
 {
     public class FilterEdgeConvolution: FilterConvolution
     {
+        /// <summary>
+        /// Al heredar de FilterConvolution, FilterEdgeConvolution tiene todos los métodos
+        /// declarados en la superclase, cambiando los parámetros de la matriz, complemento y divisor.
+        /// </summary>
         public FilterEdgeConvolution()
         {
             this.matrizParametros = new int[3, 3];
