@@ -6,6 +6,10 @@ namespace CompAndDel.Filters
 {
     public class FilterBlurConvolution: FilterConvolution
     {
+        /// <summary>
+        /// Al heredar de FilterConvolution, FilterBlurConvolution tiene todos los métodos
+        /// declarados en la superclase, cambiando los parámetros de la matriz, complemento y divisor.
+        /// </summary>
         public FilterBlurConvolution()
         {
             this.matrizParametros = new int[3, 3];

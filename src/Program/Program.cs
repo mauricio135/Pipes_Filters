@@ -17,6 +17,12 @@ namespace CompAndDel
             PictureProvider p = new PictureProvider ();
             IPicture pic = p.GetPicture ("..\\Images\\image.jpg");
 
+            /// <summary>
+            /// Las clases Pipe que aplican algún filtro a la imagen delegan la responsabilidad de modificar
+            /// la imagen a la clase Filter que la compone.
+            /// </summary>
+            /// <returns></returns>
+
             #region Ejercicio 1
 
             IPipe Pipe1_3 = new PipeNull ();
