@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Text;
-using CompAndDel;
-
+using CompAndDel;                                                         
 namespace CompAndDel.Filters
 {
     public class FilterSave : IFilter
