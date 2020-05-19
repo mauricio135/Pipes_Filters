@@ -8,6 +8,7 @@ namespace CompAndDel
     {
         static void Main(string[] args)
         {
+            /*
             //Ejercicio 4
 
             
@@ -29,9 +30,19 @@ namespace CompAndDel
             IPicture pic = p.GetPicture("..\\Images\\image.jpg");
 
             Pipe1.Send(pic);
+            */
 
+            IFilter Sharpen = new FilterSharpenConvolution();
+            IFilter Save = new FilterSave();
 
+            IPipe Pipe3 = new PipeNull();
+            IPipe Pipe2 = new PipeSerial (Save, Pipe3);
+            IPipe Pipe1 = new PipeSerial (Sharpen, Pipe2);
 
+            PictureProvider p = new PictureProvider();
+            IPicture pic = p.GetPicture("..\\Images\\image.jpg");
+
+            Pipe1.Send(pic);
 
         }
     }
