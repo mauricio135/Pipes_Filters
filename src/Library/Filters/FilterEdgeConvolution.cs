@@ -4,7 +4,7 @@ using CompAndDel;
 
 namespace CompAndDel.Filters
 {
-    public class FilterEdgeConvolution: FilterBlurConvolution
+    public class FilterEdgeConvolution: FilterConvolution
     {
         public FilterEdgeConvolution()
         {

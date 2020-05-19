@@ -8,23 +8,42 @@ namespace CompAndDel
     {
         static void Main(string[] args)
         {
+            /*
+            //Ejercicio 4
+
+            
             IFilter Greyscale = new FilterGreyscale();
             IFilter Negative = new FilterNegative();
-            IFilter Edge = new FilterEdgeConvolution();
-            IFilter Save = new FilterSave();
+            IFilter Twitter = new FilterTwitter();
+            IFilterBool HasFace = new FilterFace();
 
-            IPipe Pipe4 = new PipeNull();
-            IPipe PipeSave3 = new PipeSerial(Save, Pipe4);
-            IPipe Pipe3 = new PipeSerial(Negative, PipeSave3);
-            IPipe PipeSave2 = new PipeSerial(Save,Pipe3);
-            IPipe Pipe2 = new PipeSerial(Greyscale, PipeSave2);            
-            IPipe PipeSave1 = new PipeSerial(Save,Pipe2);
-            IPipe Pipe1 = new PipeSerial (Edge, PipeSave1);
+
+            IPipe Pipe5 = new PipeNull();
+            IPipe Pipe4 = new PipeSerial(Negative,Pipe5);
+            IPipe Pipe3 = new PipeSerial(Twitter, Pipe5);
+            
+            IPipe Pipe2 = new PipeConditionalFork(Pipe3,Pipe4,HasFace );   
+                      
+            IPipe Pipe1 = new PipeSerial (Greyscale, Pipe2);
             
             PictureProvider p = new PictureProvider();
-            IPicture pic = p.GetPicture("..\\Images\\dog.jpg");
+            IPicture pic = p.GetPicture("..\\Images\\image.jpg");
 
             Pipe1.Send(pic);
+            */
+
+            IFilter Sharpen = new FilterSharpenConvolution();
+            IFilter Save = new FilterSave();
+
+            IPipe Pipe3 = new PipeNull();
+            IPipe Pipe2 = new PipeSerial (Save, Pipe3);
+            IPipe Pipe1 = new PipeSerial (Sharpen, Pipe2);
+
+            PictureProvider p = new PictureProvider();
+            IPicture pic = p.GetPicture("..\\Images\\image.jpg");
+
+            Pipe1.Send(pic);
+
         }
     }
 }
