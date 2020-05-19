@@ -12,7 +12,7 @@ namespace CompAndDel.Filters
     public class FilterTwitter : IFilter
     {
         /// <summary>
-        /// Recibe una imagen y la guarda
+        /// Recibe una imagen y la publica en Twitter
         /// </summary>
         /// <param name="image">Imagen a la cual se le va aplicar el filtro.</param>
         /// <returns>Imagen con el filtro aplicado</returns>
