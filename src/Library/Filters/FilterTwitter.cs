@@ -28,20 +28,13 @@ namespace CompAndDel.Filters
         
         public IPicture Filter (IPicture image)
         {
-            
-
-             
-                
+          
                 PictureProvider p = new PictureProvider ();
                 p.SavePicture (image,$"..\\Images\\TwitterPictureTemp.jpg");
                 var twitter = new TwitterImage (consumerKey, consumerKeySecret, accessToken, accessTokenSecret);
                 Console.WriteLine (twitter.PublishToTwitter ("Imagen Filtrada", $"..\\Images\\TwitterPictureTemp.jpg" ));
                 return image;
-                
-
-            
-            
-
+      
         }
     }
 }
