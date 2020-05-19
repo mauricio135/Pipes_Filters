@@ -11,8 +11,11 @@ namespace CompAndDel
             IFilter Greyscale = new FilterGreyscale();
             IFilter Negative = new FilterNegative();
             IFilter Save = new FilterSave();
+            IFilter Twitter = new FilterTwitter();
 
-            IPipe Pipe3 = new PipeNull();
+
+            IPipe Pipe4 = new PipeNull();
+            IPipe Pipe3 = new PipeSerial(Twitter, Pipe4);
             IPipe PipeSave2 = new PipeSerial(Save,Pipe3);
             IPipe Pipe2 = new PipeSerial(Negative, PipeSave2);            
             IPipe PipeSave1 = new PipeSerial(Save,Pipe2);

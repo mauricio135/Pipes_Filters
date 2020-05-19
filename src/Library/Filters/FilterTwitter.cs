@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Text;
-using CompAndDel;                                                         
+using CompAndDel;
+using TwitterUCU;
+
 namespace CompAndDel.Filters
+
 {
     public class FilterTwitter : IFilter
     {
@@ -28,8 +31,11 @@ namespace CompAndDel.Filters
             
 
              
+                
+                PictureProvider p = new PictureProvider ();
+                p.SavePicture (image,$"..\\Images\\TwitterPictureTemp.jpg");
                 var twitter = new TwitterImage (consumerKey, consumerKeySecret, accessToken, accessTokenSecret);
-                Console.WriteLine (twitter.PublishToTwitter (pasajero.ImprimeDatos (), pasajero.Foto));
+                Console.WriteLine (twitter.PublishToTwitter ("Imagen Filtrada", $"..\\Images\\TwitterPictureTemp.jpg" ));
                 return image;
                 
 
